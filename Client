@@ -1,0 +1,82 @@
+Package org.Sythe.api;
+
+sythe.api.player.Player;
+sythe.injection.generic.RSClient;
+sythe.injection.interfaces.Client;
+
+
+
+
+
+public class Client {
+
+    private final IClient _client;
+
+    public Client()
+    {
+        this._client = ((Client)RSClient.getClient().getApplet());
+    }
+
+    public int getRawYaw()
+    {
+        return _client.cameraYaw();
+    }
+    public int getRawPitch()
+    {
+        return _client.cameraPitch();
+    }
+    public int getBaseX()
+    {
+        return _client.getBaseX();
+    }
+    public int getBaseY()
+    {
+        return _client.getBaseY();
+    }
+    public int getPlane()
+    {
+        return _client.getPlane();
+    }
+    public int cameraX()
+    {
+        return _client.cameraX();
+    }
+
+    public int cameraY(){return _client.cameraY();}
+    public int cameraZ(){ return _client.cameraZ();}
+    public int cameraYaw()
+    {
+        double radians = _client.cameraYaw();
+        int yaw = (int)Math.round(radians/2048*360);
+        return yaw;
+    }
+    public int cameraPitch()
+    {
+        double radians = _client.cameraPitch();
+        int yaw = (int)Math.round(radians/2048*360);
+        return yaw;
+    }
+    public String[] menuActions() { return _client.menuActions();}
+    public int getMenuHeight() { return _client.menuHeight();}
+    public int getMenuWidth() { return _client.menuWidth();}
+    public boolean isMenuOpen() { return _client.isMenuOpen(); }
+
+    public IClient get_client() {
+        return _client;
+    }
+
+    public Player getLocalPlayer()
+    {
+        return new Player(_client.getLocalPlayer());
+    }
+
+    public int[][][] getTileHeights()
+    {
+        return _client.tileHeights();
+    }
+    public byte[][][] getTileSettings()
+    {
+        return _client.getTileSettings();
+    }
+
+}
