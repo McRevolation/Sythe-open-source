@@ -4,10 +4,6 @@ sythe.api.player.Player;
 sythe.injection.generic.RSClient;
 sythe.injection.interfaces.Client;
 
-
-
-
-
 public class Client {
 
     private final IClient _client;
